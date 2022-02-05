@@ -9,6 +9,7 @@ const (
 	Socks4
 	Socks5
 	Shadowsocks
+	SSH
 )
 
 type Proto uint8
@@ -27,6 +28,8 @@ func (proto Proto) String() string {
 		return "socks5"
 	case Shadowsocks:
 		return "ss"
+	case SSH:
+		return "ssh"
 	default:
 		return fmt.Sprintf("proto(%d)", proto)
 	}

@@ -14,6 +14,12 @@
 
 English | [简体中文](README_ZH.md)
 
+## 2022-02-06
+增加ssh协议(单连接，性能有些差)
+```bash
+# -net 为自动添加路由表(网段路由到tun), 密码如有特殊字符，可以先 urlencode 再使用
+sudo ./tun2socks -device tun://utun3 -proxy ssh://用户:密码@ip:端口 -net 100.0.0.1/8,10.0.0.1/8,192.168.2.0/24
+```
 ## Features
 
 - **Network Support**

@@ -61,6 +61,8 @@ func parseProxy(s string) (proxy.Proxy, error) {
 		return proxy.NewSocks5(parseSocks5(u))
 	case proto.Shadowsocks.String():
 		return proxy.NewShadowsocks(parseShadowsocks(u))
+	case proto.SSH.String():
+		return proxy.NewSSH(parseHTTP(u))
 	default:
 		return nil, fmt.Errorf("unsupported protocol: %s", protocol)
 	}

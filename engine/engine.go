@@ -44,6 +44,9 @@ type Key struct {
 	Interface  string `yaml:"interface"`
 	Config     string `yaml:"-"`
 	Version    bool   `yaml:"-"`
+	Net        string `yaml:"net"`
+	Tun        string `yaml:"tun"`
+	Gateway    string `yaml:"gateway"`
 }
 
 type engine struct {
