@@ -8,7 +8,7 @@ import (
 	"net"
 
 	"github.com/xjasonlyu/tun2socks/v2/component/dialer"
-	M "github.com/xjasonlyu/tun2socks/v2/constant"
+	M "github.com/xjasonlyu/tun2socks/v2/metadata"
 	"github.com/xjasonlyu/tun2socks/v2/proxy/proto"
 	"github.com/xjasonlyu/tun2socks/v2/transport/socks5"
 )
@@ -38,7 +38,7 @@ func NewSocks5(addr, user, pass string) (*Socks5, error) {
 }
 
 func (ss *Socks5) DialContext(ctx context.Context, metadata *M.Metadata) (c net.Conn, err error) {
-	var network = "tcp"
+	network := "tcp"
 	if ss.unix {
 		network = "unix"
 	}

@@ -11,8 +11,8 @@ CGO_ENABLED := 0
 GO111MODULE := on
 
 LDFLAGS += -w -s -buildid=
-LDFLAGS += -X "$(MODULE)/constant.Version=$(BUILD_VERSION)"
-LDFLAGS += -X "$(MODULE)/constant.GitCommit=$(BUILD_COMMIT)"
+LDFLAGS += -X "$(MODULE)/version.Version=$(BUILD_VERSION)"
+LDFLAGS += -X "$(MODULE)/version.GitCommit=$(BUILD_COMMIT)"
 
 GO_BUILD = GO111MODULE=$(GO111MODULE) CGO_ENABLED=$(CGO_ENABLED) \
 	go build $(BUILD_FLAGS) -ldflags '$(LDFLAGS)' -tags '$(BUILD_TAGS)' -trimpath
@@ -150,6 +150,9 @@ $(windows_releases): %.zip: %
 all-arch: $(UNIX_ARCH_LIST) $(WINDOWS_ARCH_LIST)
 
 releases: $(unix_releases) $(windows_releases)
+
+lint:
+	golangci-lint run --disable-all -E govet -E gofumpt -E megacheck ./...
 
 clean:
 	rm -rf $(BUILD_DIR)

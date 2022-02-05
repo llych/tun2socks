@@ -9,6 +9,8 @@ import (
 	"os/signal"
 	"syscall"
 	"time"
+
+	_ "github.com/xjasonlyu/tun2socks/v2/common/automaxprocs"
 )
 
 var key = new(engine.Key)
